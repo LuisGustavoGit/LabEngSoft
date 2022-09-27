@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">  
+    <title>Palindrome Checker in JavaScript | Codequs</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Verificar Palíndromo</h1>
+       
+      </header>
+      <div class="inputs">
+        <input type="text" spellcheck="false" placeholder="Enter text or number">
+        <button>Conferir</button>
+      </div>
+      <p class="info-txt"></p>
+    </div>
+    <script>
+        const txtInput = document.querySelector(".inputs input"),
+checkBtn = document.querySelector(".inputs button"),
+infoTxt = document.querySelector(".info-txt");
+let filterInput;
+checkBtn.addEventListener("click", () => {
+    let reverseInput = filterInput.split("").reverse().join("");
+    infoTxt.style.display = "block";
+    if(filterInput != reverseInput) {
+        return infoTxt.innerHTML = `Não é palíndromo!`;
+    }
+    infoTxt.innerHTML = `É palíndromo!`;
+});
+txtInput.addEventListener("keyup", () => {
+    filterInput = txtInput.value.toLowerCase().replace(/[^A-Z0-9]/ig, "");
+    if(filterInput) {
+        return checkBtn.classList.add("active");
+    }
+    infoTxt.style.display = "none";
+    checkBtn.classList.remove("active");
+});
+    </script>
+  </body>
+</html>
